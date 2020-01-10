@@ -17,12 +17,30 @@
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::any('/logout',function(){
-    // die("ASDF");
-    return view('auth/login');
+/**User profile related url's */
+Route::middleware('auth:web')->group(function() {
+    Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/settings/edit-myProfile','admin\SettingsController@updateProfile')->middleware('auth');
+    Route::post('/settings/edit-myProfile','admin\SettingsController@updateProfile')->middleware('auth');
+    Route::get('change-password','admin\SettingsController@changePassword');
+    Route::post('change-password','admin\SettingsController@changePassword');
 });
-Route::get('/settings','admin\Settings@myProfile');
+
+
+/**Routes below for customers */
+Route::middleware('auth:web')->group(function() {
+    Route::get('/customer-list', 'Customers\CustomersController@customerList')->name('customer-list');
+    Route::get('/customer-add', 'Customers\CustomersController@create')->name('customer-add');
+    Route::post('/customer-add', 'Customers\CustomersController@create')->name('customer-add');
+    Route::get('/customer-update/{id}', 'Customers\CustomersController@update')->name('customer-update');
+    Route::post('/customer-update/{id}', 'Customers\CustomersController@update')->name('customer-update');
+    Route::post('/customer-delete', 'Customers\CustomersController@destroy')->name('customer-delete');
+    Route::get('/customer-view/{id}', 'Customers\CustomersController@view')->name('customer-view');
+   
+});
+
+Route::any('/logout','admin\SettingsController@logout');
+
 Route::get('/register',function(){
     return view("auth/register");
 });

@@ -30,7 +30,7 @@ return [
     |
     */
 
-    'logo' => '<b>Demo</b>LTE',
+    'logo' => '<b>AL Dolphin</b>Marble',
     'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img_class' => 'brand-image-xl',
     'logo_img_xl' => null,
@@ -51,8 +51,8 @@ return [
 
     'layout_topnav' => null,
     'layout_boxed' => null,
-    'layout_fixed_sidebar' => true,
-    'layout_fixed_navbar' => true,
+    'layout_fixed_sidebar' => null,
+    'layout_fixed_navbar' => null,
     'layout_fixed_footer' => true,
 
     /*
@@ -112,7 +112,7 @@ return [
     |
     */
 
-    'right_sidebar' => false,
+    'right_sidebar' => true,
     'right_sidebar_icon' => 'fas fa-cogs',
     'right_sidebar_theme' => 'dark',
     'right_sidebar_slide' => true,
@@ -173,16 +173,16 @@ return [
     */
 
     'menu' => [
-        [
-            'text' => 'search',
-            'search' => true,
-            'topnav' => true,
-        ],
-        [
-            'text' => 'blog',
-            'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
-        ],
+        // [
+        //     'text' => 'search',
+        //     'search' => true,
+        //     'topnav' => true,
+        // ],
+        // [
+        //     'text' => 'blog',
+        //     'url'  => 'admin/blog',
+        //     'can'  => 'manage-blog',
+        // ],
         // [
         //     'text'        => 'pages',
         //     'url'         => 'admin/pages',
@@ -190,18 +190,41 @@ return [
         //     'label'       => 4,
         //     'label_color' => 'success',
         // ],
-        // ['header' => 'account_settings'],
+        ['header' => 'account_settings'],
         [
             'text' => 'profile',
             'url'  => 'settings',
             'icon' => 'fas fa-fw fa-user',
+            'submenu' => [
+                [
+                    'text' => 'Update My profile',
+                    'url' => '/settings/edit-myProfile',
+                    'icon_color' => 'Yellow'
+                ],
+                [
+                    'text' => 'Reset Password',
+                    'url'  => 'change-password',
+                    'icon' => 'fas fa-fw fa-lock',
+                ],
+            ]
             
         ],
+        ['header' => 'CUSTOMER DETAILS'],
         [
-            'text' => 'change_password',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
+            'text' => 'Customers',
+            'url'  => '#',
+            'icon' => 'fas fa-fw fa-user',
+            'submenu' => [
+                [
+                    'text' => 'Customer Listing',
+                    'url' => '/customer-list',
+                    'icon_color' => 'Yellow'
+                ],
+                
+            ]
+            
         ],
+        
         [
             'text'    => 'multilevel',
             'icon'    => 'fas fa-fw fa-share',
@@ -292,7 +315,7 @@ return [
     'plugins' => [
         [
             'name' => 'Datatables',
-            'active' => true,
+            'active' => false,
             'files' => [
                 [
                     'type' => 'js',
