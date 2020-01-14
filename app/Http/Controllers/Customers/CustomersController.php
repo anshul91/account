@@ -23,6 +23,9 @@ class CustomersController extends Controller
                 'email' => 'required|email|max:255|unique:customers',
                 'mobile_no' => 'required|min:10|max:10|unique:customers',
                 'contact_no' => 'required|min:10|max:10',
+                'city' => 'required',
+                'state' => 'required',
+                'tax_reg_no' => 'required|min:15|integer',
                 'address' => 'required|min:5|max:255',
             ]);
             $request->request->add(['created_by'=>Auth::id()]);
@@ -52,6 +55,12 @@ class CustomersController extends Controller
             $customer_data->mobile_no = $request->input('mobile_no');
             $customer_data->contact_no = $request->input('contact_no');
             $customer_data->address = $request->input('address');            
+            $customer_data->faxno = $request->input('faxno');            
+            $customer_data->city = $request->input('city');            
+            $customer_data->state = $request->input('state');
+            $customer_data->contact_person = $request->input('contact_person');            
+            $customer_data->tax_reg_no = $request->input('tax_reg_no');            
+            $customer_data->description = $request->input('description');            
             $customer_data->save();
             $request->session()->flash('success', 'Customer Updated successfully!');
         }

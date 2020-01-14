@@ -39,6 +39,20 @@ Route::middleware('auth:web')->group(function() {
    
 });
 
+/**Routes below for customers */
+Route::middleware('auth:web')->group(function() {
+    Route::get('/unit-list', 'Unit\UnitsController@unitList')->name('unit-list');
+
+    Route::get('/customer-add', 'Customers\CustomersController@create')->name('customer-add');
+    Route::post('/customer-add', 'Customers\CustomersController@create')->name('customer-add');
+    Route::get('/customer-update/{id}', 'Customers\CustomersController@update')->name('customer-update');
+    Route::post('/customer-update/{id}', 'Customers\CustomersController@update')->name('customer-update');
+    Route::post('/customer-delete', 'Customers\CustomersController@destroy')->name('customer-delete');
+    Route::get('/customer-view/{id}', 'Customers\CustomersController@view')->name('customer-view');
+   
+});
+
+
 Route::any('/logout','admin\SettingsController@logout');
 
 Route::get('/register',function(){

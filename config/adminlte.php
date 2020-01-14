@@ -224,7 +224,21 @@ return [
             ]
             
         ],
-        
+        ['header' => 'PRODUCT DETAILS'],
+        [
+            'text' => 'Unit',
+            'url'  => '#',
+            'icon' => 'fas fa-fw fa-user',
+            'submenu' => [
+                [
+                    'text' => 'Unit Listing',
+                    'url' => '/unit-list',
+                    'icon_color' => 'Yellow',                    
+                ],
+                
+            ]
+            
+        ],
         [
             'text'    => 'multilevel',
             'icon'    => 'fas fa-fw fa-share',

@@ -77,6 +77,57 @@
                         </div>
                         <div class="col-sm-4">
                             <div class="form-group">                       
+                                <label for="contact_person">Contact Person</label>
+                                <input type="text" class="form-control" name="contact_person" 
+                                id="contact_person" placeholder="Enter Contact Person" 
+                                value="{{$customer->contact_no}}">
+                                @error('contact_person')
+                                    <div style="color:red">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">                       
+                                <label for="faxno">Fax No.</label>
+                                <input type="text" class="form-control" 
+                                name="faxno" id="faxno" placeholder="Enter Fax No." value="{{$customer->faxno}}">
+                                @error('faxno')
+                                    <div style="color:red">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">                       
+                                <label for="city">City</label>
+                                <input type="text" class="form-control" name="city" 
+                                id="city" placeholder="Enter City" value="{{$customer->city}}">
+                                @error('city')
+                                    <div style="color:red">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">                       
+                                <label for="state">State</label>
+                                <input type="text" class="form-control" name="state" 
+                                id="state" placeholder="Enter State" value="{{$customer->state}}">
+                                @error('state')
+                                    <div style="color:red">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">                       
+                                <label for="tax_reg_no">Tax Reg. No.</label>
+                                <input type="text" class="form-control" name="tax_reg_no" 
+                                id="tax_reg_no" placeholder="Enter Tax Reg. no." value="{{$customer->tax_reg_no}}"/>
+                                @error('tax_reg_no')
+                                    <div style="color:red">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">                       
                                 <label for="address">Address</label>
                                 <textarea class="form-control" name="address" 
                                 id="address" placeholder="Enter Address">{{$customer->address}}</textarea>
@@ -85,7 +136,16 @@
                                 @enderror
                             </div>
                         </div>
-                        
+                        <div class="col-sm-4">
+                            <div class="form-group">                       
+                                <label for="description">Description</label>
+                                <textarea class="form-control" name="description" 
+                                id="description" placeholder="Enter description">{{$customer->description}}</textarea>
+                                @error('description')
+                                    <div style="color:red">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
                     </div> 
                     
                 </div>
