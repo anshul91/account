@@ -21,6 +21,12 @@ class Customers extends Migration
             $table->string('contact_no');
             $table->string('email');
             $table->string('address');
+            $table->string('faxno');
+            $table->string('city');
+            $table->string('state');
+            $table->string('contact_person');
+            $table->string('tax_reg_no');
+            $table->string('description');
             $table->tinyInteger('is_del')->default(0);
             $table->Integer('created_by');
             $table->dateTime('created_at');
