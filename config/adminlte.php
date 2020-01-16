@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'Account',
+    'title' => 'AL Marble Demo',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -30,8 +30,8 @@ return [
     |
     */
 
-    'logo' => '<b>AL Dolphin</b>Marble',
-    'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
+    'logo' => '<b>Al</b>Marble',
+    'logo_img' => 'public/vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img_class' => 'brand-image-xl',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
@@ -53,7 +53,7 @@ return [
     'layout_boxed' => null,
     'layout_fixed_sidebar' => null,
     'layout_fixed_navbar' => null,
-    'layout_fixed_footer' => true,
+    'layout_fixed_footer' => null,
 
     /*
     |--------------------------------------------------------------------------
@@ -112,7 +112,7 @@ return [
     |
     */
 
-    'right_sidebar' => true,
+    'right_sidebar' => false,
     'right_sidebar_icon' => 'fas fa-cogs',
     'right_sidebar_theme' => 'dark',
     'right_sidebar_slide' => true,
@@ -132,7 +132,7 @@ return [
     |
     */
 
-    'use_route_url' => false,
+    'use_route_url' => false,//make it false if using server.php to index.php
 
     'dashboard_url' => 'home',
 
@@ -173,108 +173,34 @@ return [
     */
 
     'menu' => [
-        // [
-        //     'text' => 'search',
-        //     'search' => true,
-        //     'topnav' => true,
-        // ],
-        // [
-        //     'text' => 'blog',
-        //     'url'  => 'admin/blog',
-        //     'can'  => 'manage-blog',
-        // ],
-        // [
-        //     'text'        => 'pages',
-        //     'url'         => 'admin/pages',
-        //     'icon'        => 'far fa-fw fa-file',
-        //     'label'       => 4,
-        //     'label_color' => 'success',
-        // ],
+        [
+            'text' => 'search',
+            'search' => true,
+            'topnav' => true,
+        ],
+        
+       
         ['header' => 'account_settings'],
         [
             'text' => 'profile',
-            'url'  => 'settings',
+            'url'  => '/settings/edit-myProfile',
             'icon' => 'fas fa-fw fa-user',
-            'submenu' => [
-                [
-                    'text' => 'Update My profile',
-                    'url' => '/settings/edit-myProfile',
-                    'icon_color' => 'Yellow'
-                ],
-                [
-                    'text' => 'Reset Password',
-                    'url'  => 'change-password',
-                    'icon' => 'fas fa-fw fa-lock',
-                ],
-            ]
-            
-        ],
-        ['header' => 'CUSTOMER DETAILS'],
-        [
-            'text' => 'Customers',
-            'url'  => '#',
-            'icon' => 'fas fa-fw fa-user',
-            'submenu' => [
-                [
-                    'text' => 'Customer Listing',
-                    'url' => '/customer-list',
-                    'icon_color' => 'Yellow'
-                ],
-                
-            ]
-            
-        ],
-        ['header' => 'PRODUCT DETAILS'],
-        [
-            'text' => 'Unit',
-            'url'  => '#',
-            'icon' => 'fas fa-fw fa-user',
-            'submenu' => [
-                [
-                    'text' => 'Unit Listing',
-                    'url' => '/unit-list',
-                    'icon_color' => 'Yellow',                    
-                ],
-                
-            ]
-            
         ],
         [
-            'text'    => 'multilevel',
+            'text' => 'change_password',
+            'url'  => 'change-password',
+            'icon' => 'fas fa-fw fa-lock',
+        ],
+        ['header' => 'Customers'],
+        [
+            'text'    => 'Customers',
             'icon'    => 'fas fa-fw fa-share',
             'submenu' => [
                 [
-                    'text' => 'level_one',
-                    'url'  => '#',
+                    'text' => 'Customer Listing',
+                    'url'  => 'customer-list',
                 ],
-                [
-                    'text'    => 'level_one',
-                    'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'level_two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                            ],
-                        ],
-                    ],
-                ],
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
-                ],
+                
             ],
         ],
         ['header' => 'labels'],
@@ -329,7 +255,7 @@ return [
     'plugins' => [
         [
             'name' => 'Datatables',
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',
@@ -350,7 +276,7 @@ return [
         ],
         [
             'name' => 'Select2',
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',

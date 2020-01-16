@@ -18,6 +18,7 @@ return array(
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
     'App\\Http\\Controllers\\Customers\\CustomersController' => $baseDir . '/app/Http/Controllers/Customers/CustomersController.php',
     'App\\Http\\Controllers\\HomeController' => $baseDir . '/app/Http/Controllers/HomeController.php',
+    'App\\Http\\Controllers\\Unit\\UnitsController' => $baseDir . '/app/Http/Controllers/Unit/UnitsController.php',
     'App\\Http\\Controllers\\admin\\SettingsController' => $baseDir . '/app/Http/Controllers/admin/SettingsController.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
     'App\\Http\\Middleware\\Authenticate' => $baseDir . '/app/Http/Middleware/Authenticate.php',

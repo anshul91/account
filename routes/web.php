@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', 'HomeController@index')->name('home');
 
 Auth::routes();
 
@@ -54,7 +52,14 @@ Route::middleware('auth:web')->group(function() {
 
 
 Route::any('/logout','admin\SettingsController@logout');
-
+Route::any('/login',function(){
+    return view('auth/login');
+});
 Route::get('/register',function(){
     return view("auth/register");
 });
+Auth::routes();
+
+Route::get('/home', function() {
+    return view('home');
+})->name('home')->middleware('auth');
