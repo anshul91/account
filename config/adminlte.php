@@ -182,19 +182,25 @@ return [
        
         ['header' => 'account_settings'],
         [
-            'text' => 'profile',
-            'url'  => '/settings/edit-myProfile',
-            'icon' => 'fas fa-fw fa-user',
-        ],
-        [
-            'text' => 'change_password',
-            'url'  => 'change-password',
-            'icon' => 'fas fa-fw fa-lock',
+            'text'  =>  'Settings',
+            'icon'  =>  'fas fa-cogs',
+            'submenu' => [
+                [
+                    'text' => 'profile',
+                    'url'  => '/settings/edit-myProfile',
+                    'icon' => 'fas fa-fw fa-user',
+                ],
+                [
+                    'text' => 'change_password',
+                    'url'  => 'change-password',
+                    'icon' => 'fas fa-fw fa-lock',
+                ],
+            ]
         ],
         ['header' => 'Customers'],
         [
             'text'    => 'Customers',
-            'icon'    => 'fas fa-fw fa-share',
+            'icon'    => 'fas fa-users',
             'submenu' => [
                 [
                     'text' => 'Customer Listing',
@@ -203,7 +209,19 @@ return [
                 
             ],
         ],
-        ['header' => 'labels'],
+        ['header' => 'Product & Settings'],
+        [
+            'text'    => 'Unit',
+            'icon'    => 'fas fa-balance-scale',
+            'submenu' => [
+                [
+                    'text' => 'Unit Listing',
+                    'url'  => 'unit-list',
+                ],
+                
+            ],
+        ],
+        ['header' => 'Products'],
         [
             'text'       => 'important',
             'icon_color' => 'red',

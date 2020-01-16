@@ -41,12 +41,12 @@ Route::middleware('auth:web')->group(function() {
 Route::middleware('auth:web')->group(function() {
     Route::get('/unit-list', 'Unit\UnitsController@unitList')->name('unit-list');
 
-    Route::get('/customer-add', 'Customers\CustomersController@create')->name('customer-add');
-    Route::post('/customer-add', 'Customers\CustomersController@create')->name('customer-add');
-    Route::get('/customer-update/{id}', 'Customers\CustomersController@update')->name('customer-update');
-    Route::post('/customer-update/{id}', 'Customers\CustomersController@update')->name('customer-update');
-    Route::post('/customer-delete', 'Customers\CustomersController@destroy')->name('customer-delete');
-    Route::get('/customer-view/{id}', 'Customers\CustomersController@view')->name('customer-view');
+    Route::get('/unit-add', 'Unit\UnitsController@create')->name('unit-add');
+    Route::post('/unit-add', 'Unit\UnitsController@create')->name('unit-add');
+    Route::get('/unit-update/{id}', 'Unit\UnitsController@update')->name('unit-update');
+    Route::post('/unit-update/{id}', 'Unit\UnitsController@update')->name('unit-update');
+    Route::post('/unit-delete', 'Unit\UnitsController@destroy')->name('unit-delete');
+    Route::get('/unit-view/{id}', 'Unit\UnitsController@view')->name('unit-view');
    
 });
 
