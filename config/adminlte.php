@@ -1,5 +1,5 @@
 <?php
-
+/**use this command to fully download functional file php artisan adminlte:install --type=full */
 return [
 
     /*
