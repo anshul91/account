@@ -211,29 +211,37 @@ return [
         ],
         ['header' => 'Product & Settings'],
         [
-            'text'    => 'Unit',
-            'icon'    => 'fas fa-balance-scale',
+            'text'    => 'Masters',
+            'icon'    => 'fas fa-truck',
             'submenu' => [
                 [
                     'text' => 'Unit Listing',
                     'url'  => 'unit-list',
+                    'icon' => 'fas fa-balance-scale'
                 ],
-                
+                [
+                    'text' => 'Master Product Listing',
+                    'url'  => 'master-product-list',
+                ],
+                [
+                    'text' => 'Product Listing',
+                    'url'  => 'product-list',
+                ],
             ],
         ],
-        ['header' => 'Products'],
-        [
-            'text'       => 'important',
-            'icon_color' => 'red',
-        ],
-        [
-            'text'       => 'warning',
-            'icon_color' => 'yellow',
-        ],
-        [
-            'text'       => 'information',
-            'icon_color' => 'aqua',
-        ],
+        // ['header' => 'Products'],
+        // [
+        //     'text'       => 'important',
+        //     'icon_color' => 'red',
+        // ],
+        // [
+        //     'text'       => 'warning',
+        //     'icon_color' => 'yellow',
+        // ],
+        // [
+        //     'text'       => 'information',
+        //     'icon_color' => 'aqua',
+        // ],
     ],
 
     /*

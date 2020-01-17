@@ -49,7 +49,31 @@ Route::middleware('auth:web')->group(function() {
     Route::get('/unit-view/{id}', 'Unit\UnitsController@view')->name('unit-view');
    
 });
+/**Routes below for master-Products */
+Route::middleware('auth:web')->group(function() {
+    Route::get('/master-product-list', 'MasterProducts\MasterProductsController@masterProductList')->name('master-product-list');
 
+    Route::get('/master-product-add', 'MasterProducts\MasterProductsController@create')->name('master-product-add');
+    Route::post('/master-product-add', 'MasterProducts\MasterProductsController@create')->name('master-product-add');
+    Route::get('/master-product-update/{id}', 'MasterProducts\MasterProductsController@update')->name('master-product-update');
+    Route::post('/master-product-update/{id}', 'MasterProducts\MasterProductsController@update')->name('master-product-update');
+    Route::post('/master-product-delete', 'MasterProducts\MasterProductsController@destroy')->name('master-product-delete');
+    Route::get('/master-product-view/{id}', 'MasterProducts\MasterProductsController@view')->name('master-product-view');
+   
+});
+
+/**Routes below for Products */
+Route::middleware('auth:web')->group(function() {
+    Route::get('/product-list', 'Products\ProductsController@productList')->name('product-list');
+
+    Route::get('/product-add', 'Products\ProductsController@create')->name('product-add');
+    Route::post('/product-add', 'Products\ProductsController@create')->name('product-add');
+    Route::get('/product-update/{id}', 'Products\ProductsController@update')->name('product-update');
+    Route::post('/product-update/{id}', 'Products\ProductsController@update')->name('product-update');
+    Route::post('/product-delete', 'Products\ProductsController@destroy')->name('product-delete');
+    Route::get('/product-view/{id}', 'Products\ProductsController@view')->name('product-view');
+   
+});
 
 Route::any('/logout','admin\SettingsController@logout');
 Route::any('/login',function(){
