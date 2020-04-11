@@ -8,4 +8,5 @@ class Units extends Model
 {
     protected $table = 'units';
     public $fillable = ['id','name','type','description','created_by'];
+
 }

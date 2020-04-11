@@ -7,12 +7,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h5>products</h5>
+            <h5>sellers</h5>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">products</li>
+              <li class="breadcrumb-item active">sellers</li>
             </ol>
           </div>
         </div>
@@ -24,11 +24,11 @@
          
           <div class="card">
             <div class="card-header"> @include('layouts/flash')
-              <h3 class="card-title">Product Listing
+              <h3 class="card-title">Seller Listing
                   
               </h3>
-              <span style="float:right"><a href="<?=url('/product-add');?>" class="btn btn-sm btn-success">
-                  <i class="fas fa-plus-circle"></i> Add Product</a>
+              <span style="float:right"><a href="<?=url('/seller-add');?>" class="btn btn-sm btn-success">
+                  <i class="fas fa-plus-circle"></i> Add Seller</a>
                 </span>
             </div>
             <!-- /.card-header -->
@@ -39,35 +39,33 @@
                           <label>Show <select name="example1_length" 
                           aria-controls="example1"
                            class="custom-select custom-select-sm form-control form-control-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label></div></div><div class="col-sm-12 col-md-6"><div id="example1_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="example1"></label></div></div></div><div class="row"><div class="col-sm-12">
-                            <table id="products" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+                            <table id="sellers" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
                             <thead>
                                 <tr role="row">
                                     <th class="sorting_asc">S.no.</th>
-                                    <th class="sorting">Master Product</th>
-                                    <th class="sorting">Unit</th>
-                                    <th class="sorting">Title</th>
-                                    <th class="sorting">Sub-title</th>
-                                    <th class="sorting">Description</th>
-                                    <th class="sorting" width="20px;">Actions</th>
+                                    <th class="sorting">Seller Name</th>
+                                    <th class="sorting">Email Id</th>
+                                    <th class="sorting">Mobile No.</th>
+                                    <th class="sorting">Landline No.</th>
+                                    <th class="sorting">Address</th>
+                                    <th class="sorting">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php foreach($data as $k=>$product){?>
+                                <?php foreach($sellers as $k=>$seller){?>
                                 <tr role="row" class="odd">
                                     <td class="sorting_1"><?=$k+1?></td>
-                                    
-                                    <td><?= $product->master_products->title?></td>
-                                    <td><?= $product->units->name?></td>
-                                    <td><?= $product->title?></td>
-                                    <td><?= $product->sub_title?></td>
-                                    <td><?= $product->description?></td>
+                                    <td><?=$seller->first_name." ".$seller->last_name?></td>
+                                    <td><?= $seller->email?></td>
+                                    <td><?= $seller->mobile_no?></td>
+                                    <td><?= $seller->contact_no?></td>
+                                    <td><?= $seller->address?></td>
                                     <td class="text-right py-0 align-middle">
                                       <div class="btn-group btn-group-sm">
-                                        <!-- <a href="<?=url('/product-update'."/".Crypt::encrypt($product->id));?>" class="btn btn-primary"><i class="fas fa-pencil-alt"></i></a>
-                                        <a href="<?=url('/product-view'."/".Crypt::encrypt($product->id));?>" class="btn btn-info"><i class="fas fa-eye"></i></a>
+                                        <a href="<?=url('/seller-update'."/".Crypt::encrypt($seller->id));?>" class="btn btn-primary"><i class="fas fa-pencil-alt"></i></a>
+                                        <a href="<?=url('/seller-view'."/".Crypt::encrypt($seller->id));?>" class="btn btn-info"><i class="fas fa-eye"></i></a>
                                         <a href="#" 
-                                        class="btn btn-danger" 
-                                        onclick="deleteproduct({{$product->id}})"><i class="fas fa-trash"></i></a> -->
+                                        class="btn btn-danger" onclick="deleteseller({{$seller->id}})"><i class="fas fa-trash"></i></a>
                                     </div>
                                     </td>
                                 </tr>
@@ -87,8 +85,8 @@
 @section('js')
     <script>
         $(function () {
-            // $("#products").DataTable();
-            $('#products').DataTable({
+            // $("#sellers").DataTable();
+            $('#sellers').DataTable({
                 "paging": true,
                 "lengthChange": false,
                 "searching": false,
@@ -99,7 +97,7 @@
 
             
         });
-        function deleteproduct(id){
+        function deleteseller(id){
           Swal.fire({
                   title: 'Are you sure?',
                   text: "You won't be able to revert this!",
@@ -112,12 +110,12 @@
                   if (result.value) {
                     $.ajax({
                         type: "post",
-                        url: "<?=url('/master-product-delete')?>",
+                        url: "<?=url('/seller-delete')?>",
                         data: {'id':id,"_token": "{{ csrf_token() }}",},              
                         success: function(data){
                           Swal.fire(
                               'Deleted!',
-                              'Your master product has been deleted.',
+                              'Your Seller has been deleted.',
                               'success'
                           );
                           $(".content").load(location.href + " .content");

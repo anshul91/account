@@ -36,8 +36,9 @@
                             <div class="form-group">                       
                                 <label for="last_name">Type</label>
                                 <select name="type" id="type" class="form-control">
-                                    <option value="1">Simple</option>
-                                    <option value="2">Multiple</option>
+                                @foreach(Config::get('constants.measurement_unit') as $k => $measures)
+                                  <option value="<?=$k?>"><?=$measures?></option>                                  
+                                @endforeach
                                 </select>
                                 @error('type')
                                     <div style="color:red">{{ $message }}</div>

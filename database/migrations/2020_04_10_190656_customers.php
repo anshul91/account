@@ -26,6 +26,8 @@ class Customers extends Migration
             $table->string('state');
             $table->string('contact_person');
             $table->string('tax_reg_no');
+            $table->unsignedBigInteger('customers_type_id');
+            $table->foreign('customers_type_id')->references('id')->on('customers_type');
             $table->string('description');
             $table->tinyInteger('is_del')->default(0);
             $table->Integer('created_by');

@@ -2,7 +2,7 @@
 @extends('adminlte::master')
 
 @section('adminlte_css_pre')
-    <link rel="stylesheet" href="{{ asset('public/vendor/icheck-bootstrap/icheck-bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/icheck-bootstrap/icheck-bootstrap.min.css') }}">
 @stop
 
 @section('adminlte_css')
@@ -97,7 +97,7 @@
 @stop
 
 @section('adminlte_js')
-    <script src="{{ asset('public/vendor/adminlte/dist/js/adminlte.min.js') }}"></script>
+    <script src="{{ asset('vendor/adminlte/dist/js/adminlte.min.js') }}"></script>
     @stack('js')
     @yield('js')
 @stop

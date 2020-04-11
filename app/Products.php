@@ -13,10 +13,32 @@ class Products extends Model
             'created_at'
         ];
 
-    public function units(){
+    public function unit() {
         return $this->belongsTo('App\Units','unit_id','id');
     }
-    public function master_products(){
+    public function master_products() {
         return $this->belongsTo('App\MasterProducts','master_product_id','id');
     }
+
+    public function stock_details() {
+        return $this->belongsTo('App\StockDetails');
+    }
+
+/**
+ * @purpose: Binding one-many relationship with Purchase details one product can have multiple bills or purchase details
+ * @created_by: Anshul Pareek
+ * @created_at: 11-Apr-2020
+ *   
+ */
+    public function purchase_details() {
+        return $this->hasMany('App\PurchaseDetails');
+    }
+/**
+ * @purpose: Binding one-one relationship with stock details one product can have only stock qty item
+ * @created_by: Anshul Pareek
+ * @created_at: 11-Apr-2020
+ */
+    // public function stock_details() {
+    //     return $this->hasOne('App\StockDetails');
+    // }
 }

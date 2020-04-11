@@ -11,7 +11,7 @@
                 @include('layouts/flash')
                 
               <div class="card-header">
-                <h3 class="card-title">Add New Unit</h3>
+                <h3 class="card-title">Add New Measurement</h3>
                 <a href="<?=url('/unit-list')?>" style="float:right;"><i class="fas fa-arrow-left"></i> Back</a>
               </div>
               <!-- /.card-header -->
@@ -35,8 +35,10 @@
                             <div class="form-group">                       
                                 <label for="type">Type</label>
                                 <select name="type" id="type" class="form-control">
-                                    <option value="1">Simple</option>
-                                    <option value="2">Multiple</option>
+                                @foreach(Config::get('constants.measurement_unit') as $k => $measures)
+                                  <option value="<?=$k?>"><?=$measures?></option>
+                                  
+                                @endforeach
                                 </select>
                                 @error('type')
                                     <div style="color:red">{{ $message }}</div>

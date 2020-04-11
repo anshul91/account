@@ -128,6 +128,22 @@
                                 @enderror
                             </div>
                         </div>
+
+                        <div class="col-sm-4">
+                            <div class="form-group">                       
+                                <label for="customers_type_id">Customer Type</label>
+                                <select class="form-control" name="customers_type_id" id="customers_type_id">
+                                <option value="">--Select Customer Type--</option>
+                                @foreach($customers_type as $k=>$v)
+                                    <option value="<?=$v->id?>"<?php if($v->id==$customer->customers_type_id)echo "selected";?>><?=ucwords($v->type)?></option>
+                                @endforeach
+                                </select>
+                                @error('customers_type_id')
+                                    <div style="color:red">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+
                         <div class="col-sm-4">
                             <div class="form-group">                       
                                 <label for="address">Address</label>

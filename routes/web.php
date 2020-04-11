@@ -37,6 +37,19 @@ Route::middleware('auth:web')->group(function() {
    
 });
 
+
+/**Routes below for sellers */
+Route::middleware('auth:web')->group(function() {
+    Route::get('/seller-list', 'Sellers\SellersController@sellerList')->name('seller-list');
+    Route::get('/seller-add', 'Sellers\SellersController@create')->name('seller-add');
+    Route::post('/seller-add', 'Sellers\SellersController@create')->name('seller-add');
+    Route::get('/seller-update/{id}', 'Sellers\SellersController@update')->name('seller-update');
+    Route::post('/seller-update/{id}', 'Sellers\SellersController@update')->name('seller-update');
+    Route::post('/seller-delete', 'Sellers\SellersController@destroy')->name('seller-delete');
+    Route::get('/seller-view/{id}', 'Sellers\SellerrsController@view')->name('seller-view');
+   
+});
+
 /**Routes below for customers */
 Route::middleware('auth:web')->group(function() {
     Route::get('/unit-list', 'Unit\UnitsController@unitList')->name('unit-list');
@@ -65,14 +78,27 @@ Route::middleware('auth:web')->group(function() {
 /**Routes below for Products */
 Route::middleware('auth:web')->group(function() {
     Route::get('/product-list', 'Products\ProductsController@productList')->name('product-list');
-
     Route::get('/product-add', 'Products\ProductsController@create')->name('product-add');
     Route::post('/product-add', 'Products\ProductsController@create')->name('product-add');
     Route::get('/product-update/{id}', 'Products\ProductsController@update')->name('product-update');
     Route::post('/product-update/{id}', 'Products\ProductsController@update')->name('product-update');
     Route::post('/product-delete', 'Products\ProductsController@destroy')->name('product-delete');
     Route::get('/product-view/{id}', 'Products\ProductsController@view')->name('product-view');
-   
+});
+
+
+/**Routes below for Purchase */
+Route::middleware('auth:web')->group(function() {
+    Route::get('/purchase-list', 'Purchase\PurchaseController@purchaseList')->name('purchase-list');
+    Route::get('/purchase-add', 'Purchase\PurchaseController@create')->name('purchase-add');
+    Route::post('/purchase-add', 'Purchase\PurchaseController@create')->name('purchase-add');
+    Route::get('/purchase-update/{id}', 'Purchase\PurchaseController@update')->name('purchase-update');
+    Route::post('/purchase-update/{id}', 'Purchase\PurchaseController@update')->name('purchase-update');
+    Route::post('/purchase-delete', 'Purchase\PurchaseController@destroy')->name('purchase-delete');
+    Route::get('/purchase-view/{id}', 'Purchase\PurchaseController@view')->name('purchase-view');
+    Route::post('/get-prod-opt-by-masterid', 'Purchase\PurchaseController@getProdOptByMasterid')->name('get-prod-opt-by-masterid');
+    Route::post('/get-unit-by-prodid', 'Purchase\PurchaseController@getUnitByProductId')->name('get-unit-by-prodid');
+    Route::post('/seller-details', 'Sellers\SellersController@getAjxSellerDetailsById')->name('seller-details');
 });
 
 Route::any('/logout','admin\SettingsController@logout');

@@ -12,8 +12,8 @@
                 @include('layouts/flash')
                 
               <div class="card-header">
-                <h3 class="card-title">Add New Customer</h3>
-                <a href="<?=url('/customer-list')?>" style="float:right;"><i class="fas fa-arrow-left"></i> Back</a>
+                <h3 class="card-title">Add New Seller</h3>
+                <a href="<?=url('/seller-list')?>" style="float:right;"><i class="fas fa-arrow-left"></i> Back</a>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
@@ -135,9 +135,9 @@
                         </div>
                         <div class="col-sm-4">
                             <div class="form-group">                       
-                                <label for="customers_type_id">Customer Type</label>
+                                <label for="customers_type_id">Seller Type</label>
                                 <select class="form-control" name="customers_type_id" id="customers_type_id">
-                                <option value="">--Select Customer Type--</option>
+                                <option value="">--Select Seller Type--</option>
                                 @foreach($customers_type as $k=>$v)
                                     <option value="<?=$v->id?>"><?=ucwords($v->type)?></option>
                                 @endforeach

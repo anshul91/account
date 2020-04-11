@@ -50,18 +50,6 @@
                         </div>
                         <div class="col-sm-4">
                             <div class="form-group">                       
-                                <label for="is_dimension">Having Dimensions? (WxHxD)</label>
-                                <select name="is_dimension" id="is_dimension" class="form-control">
-                                    <option value="1">Yes</option>
-                                    <option value="2">No</option>
-                                </select>
-                                @error('is_dimension')
-                                    <div style="color:red">{{ $message }}</div>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="form-group">                       
                                 <label for="title">Title</label>
                                 <input type="text" class="form-control" name="title" 
                                 id="title" placeholder="Enter Sub-title" value="{{old('title')}}">
@@ -91,29 +79,7 @@
                                 @enderror
                             </div>
                         </div>
-                        
-                        <div class="col-sm-4">
-                            <div class="form-group">                       
-                                <label for="stock_in_hand">Stock in hand</label>
-                                <input type="text" class="form-control" name="stock_in_hand" 
-                                id="stock_in_hand" 
-                                placeholder="Enter Stock in hand" value="{{old('stock_in_hand')}}">
-                                @error('stock_in_hand')
-                                    <div style="color:red">{{ $message }}</div>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="col-sm-4">
-                            <div class="form-group">                       
-                                <label for="final_product">Final Product</label>
-                                <input type="text" class="form-control" name="final_product" 
-                                id="description" placeholder="Enter Final Product" value="{{old('final_product')}}">
-                                @error('final_product')
-                                    <div style="color:red">{{ $message }}</div>
-                                @enderror
-                            </div>
-                        </div>
+                       
                     </div>  
 
                    

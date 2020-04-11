@@ -23,12 +23,9 @@ class ProductsController extends Controller
             $validatedData = $request->validate([
                 'master_product_id' => 'required|integer',
                 'unit_id' => 'required|integer',
-                'is_dimension' => 'required|integer',
                 'title' =>  'required|max:50',
                 'sub_title' =>  'required|max:60',
-                'description' => 'required|max:200',
-                'stock_in_hand' => 'required|numeric|min:0',
-                'final_product' => 'required'
+                'description' => 'max:200',
             ]);
             $request->request->add(['created_by'=>Auth::id()]);
             Products::create($request->all());

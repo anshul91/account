@@ -14,8 +14,8 @@ return [
     |
     */
 
-    'title' => 'AL Marble Demo',
-    'title_prefix' => '',
+    'title' => 'Marble',
+    'title_prefix' => 'AL',
     'title_postfix' => '',
 
     /*
@@ -30,12 +30,12 @@ return [
     |
     */
 
-    'logo' => '<b>Al</b>Marble',
-    'logo_img' => 'public/vendor/adminlte/dist/img/AdminLTELogo.png',
+    'logo' => '<b>AL</b>Marble',
+    'logo_img' => '',
     'logo_img_class' => 'brand-image-xl',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
-    'logo_img_alt' => 'AdminLTE',
+    'logo_img_alt' => '',
 
     /*
     |--------------------------------------------------------------------------
@@ -91,9 +91,9 @@ return [
     */
 
     'sidebar_mini' => true,
-    'sidebar_collapse' => false,
-    'sidebar_collapse_auto_size' => false,
-    'sidebar_collapse_remember' => false,
+    'sidebar_collapse' => true,
+    'sidebar_collapse_auto_size' => true,
+    'sidebar_collapse_remember' => true,
     'sidebar_collapse_remember_no_transition' => true,
     'sidebar_scrollbar_theme' => 'os-theme-light',
     'sidebar_scrollbar_auto_hide' => 'l',
@@ -112,7 +112,7 @@ return [
     |
     */
 
-    'right_sidebar' => false,
+    'right_sidebar' => true,
     'right_sidebar_icon' => 'fas fa-cogs',
     'right_sidebar_theme' => 'dark',
     'right_sidebar_slide' => true,
@@ -180,7 +180,7 @@ return [
         ],
         
        
-        ['header' => 'account_settings'],
+        // ['header' => 'account_settings'],
         [
             'text'  =>  'Settings',
             'icon'  =>  'fas fa-cogs',
@@ -197,7 +197,7 @@ return [
                 ],
             ]
         ],
-        ['header' => 'Customers'],
+        // ['header' => 'CUSTOMER\'s & SELLER\'s'],
         [
             'text'    => 'Customers',
             'icon'    => 'fas fa-users',
@@ -206,16 +206,27 @@ return [
                     'text' => 'Customer Listing',
                     'url'  => 'customer-list',
                 ],
-                
+            
             ],
         ],
-        ['header' => 'Product & Settings'],
+        [
+            'text'  =>  'Sellers',
+            'icon'  =>  'fas fa-users',
+            'submenu' => [
+                [
+                    'text'  => 'Seller Listing',
+                    'url'   => 'seller-list'
+                ]
+            ]    
+            ,
+        ],
+        // ['header' => 'Product & Settings'],
         [
             'text'    => 'Masters',
             'icon'    => 'fas fa-truck',
             'submenu' => [
                 [
-                    'text' => 'Unit Listing',
+                    'text' => 'Measures Listing',
                     'url'  => 'unit-list',
                     'icon' => 'fas fa-balance-scale'
                 ],
@@ -227,6 +238,24 @@ return [
                     'text' => 'Product Listing',
                     'url'  => 'product-list',
                 ],
+            ],
+        ],
+        // ['header' => 'PURCHASE'],
+        [
+            'text'    => 'Purchase & Sales',
+            'icon'    => 'fas fa-truck',
+            'submenu' => [
+                [
+                    'text' => 'Purchase Stock',
+                    'url'  => 'purchase-list',
+                    'icon' => 'far fa-fw fa-circle text-warning'
+                ],
+                [
+                    'text' => 'Sale Stock',
+                    'url'  => 'sales-list',
+                    'icon' => 'far fa-fw fa-circle text-danger'
+                ]
+                
             ],
         ],
         // ['header' => 'Products'],

@@ -15,14 +15,13 @@ class Products extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('master_product_id');            
-            $table->integer('unit_id');            
-            $table->tinyInteger('is_dimension')->comment("1=>having dimensions,2=>no dimension specified");
+            $table->unsignedBigInteger('master_product_id');
+            $table->foreign('master_product_id')->references('id')->on('master_products');            
+            $table->unsignedBigInteger('unit_id');
+            $table->foreign('unit_id')->references('id')->on('units');          
             $table->string('title');
             $table->string('sub_title');
             $table->string('description');
-            $table->integer('stock_in_hand');
-            $table->string('final_product');
             $table->tinyInteger('is_del')->default(0);
             $table->Integer('created_by');
             $table->dateTime('created_at');

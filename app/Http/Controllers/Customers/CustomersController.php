@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Customers;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Auth;
+use App\CustomersType;
 
 class CustomersController extends Controller
 {
@@ -18,21 +19,24 @@ class CustomersController extends Controller
     public function create(Request $request){
         if ($request->isMethod('post')) {            
             $validatedData = $request->validate([
-                'first_name' => 'required|max:20',
-                'last_name' => 'required|max:20',
+                'first_name' => 'required|max:200',
+                'last_name' => 'required|max:200',
                 'email' => 'required|email|max:255|unique:customers',
-                'mobile_no' => 'required|min:10|max:10|unique:customers',
-                'contact_no' => 'required|min:10|max:10',
+                'mobile_no' => 'min:10|max:10|unique:customers',
+                'contact_no' => 'min:10|max:20',
                 'city' => 'required',
                 'state' => 'required',
                 'tax_reg_no' => 'required|min:15|integer',
-                'address' => 'required|min:5|max:255',
+                'address' => 'required|min:0|max:255',
             ]);
+            
             $request->request->add(['created_by'=>Auth::id()]);
+            $request->customers_type_id = intval($request->customers_type_id);
             Customers::create($request->all());
             $request->session()->flash('success', 'Customer Added successfully!');
         }
-        return view('customers/create');
+        $customers_type = CustomersType::where(['is_del' => 0])->get();
+        return view('customers/create',compact('customers_type'));
     }
     public function update($id=null, Request $request){
         if(!is_null($id))
@@ -40,11 +44,11 @@ class CustomersController extends Controller
         
         if ($request->isMethod('post')) {            
             $validatedData = $request->validate([
-                'first_name' => 'required|max:20',
-                'last_name' => 'required|max:20',
+                'first_name' => 'required|max:50',
+                'last_name' => 'required|max:50',
                 'email' => 'required|email|max:255',
-                'mobile_no' => 'required|min:10|max:10',
-                'contact_no' => 'required|min:10|max:10',
+                'mobile_no' => 'required|min:5|max:30',
+                'contact_no' => 'required|min:5|max:30',
                 'address' => 'required|min:5|max:255',
             ]);
             $id = $request->input('id');
@@ -60,13 +64,14 @@ class CustomersController extends Controller
             $customer_data->state = $request->input('state');
             $customer_data->contact_person = $request->input('contact_person');            
             $customer_data->tax_reg_no = $request->input('tax_reg_no');            
+            $customer_data->customers_type_id = $request->input('customers_type_id');            
             $customer_data->description = $request->input('description');            
             $customer_data->save();
             $request->session()->flash('success', 'Customer Updated successfully!');
         }
         $customer_data = Customers::find($id);
-        
-        return view('customers/update',['customer'=>$customer_data]);
+        $customers_type = CustomersType::where(['is_del' => 0])->get();
+        return view('customers/update',['customer'=>$customer_data,'customers_type' => $customers_type]);
     }
 
     public function destroy(Request $request){
