@@ -21,8 +21,8 @@
                 @include('layouts/flash')
                 
               <div class="card-header">
-                <h3 class="card-title">Purchase Goods</h3>
-                <a href="<?=url('/purchase-list')?>" style="float:right;"><i class="fas fa-arrow-left"></i> Back</a>
+                <h3 class="card-title">Prepare Quote</h3>
+                <a href="<?=url('/sales-quote-list')?>" style="float:right;"><i class="fas fa-arrow-left"></i> Back</a>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
@@ -33,9 +33,9 @@
                     <div class="row">
                         <div class="col-sm-4">
                             <div class="form-group">                       
-                                <label for="seller_id">Select Seller</label>
-                                <select name="seller_id" id="seller_id" class="form-control" onchange="getSellerDetails(this)">
-                                <option value=""> --Select Seller--</option>
+                                <label for="customer_id">Select Customer</label>
+                                <select name="customer_id" id="customer_id" class="form-control" onchange="getCustomerDetails(this)">
+                                <option value=""> --Select Customer--</option>
                                     @foreach($sellers as $k=>$v)
                                         <option value="<?=$v->id?>"><?=$v->company_name?></option>
                                     @endforeach
@@ -218,6 +218,7 @@ function getProdOptions(e){
         dataType:'json',
         data: {
             "master_product_id" : master_product_id,
+            "chk_remaining" : true,
             "_token" : "{{ csrf_token() }}",
         },
         success: function(data){
@@ -258,7 +259,7 @@ function getUnitType(that) {
     });
 }
 
-function getSellerDetails(that){
+function getCustomerDetails(that){
     let seller_id = $(that).val();
     if(typeof seller_id !== 'undefined' && seller_id != ''){
         $(".purchase_details_div").show();

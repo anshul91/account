@@ -99,6 +99,18 @@ Route::middleware('auth:web')->group(function() {
     Route::post('/get-prod-opt-by-masterid', 'Purchase\PurchaseController@getProdOptByMasterid')->name('get-prod-opt-by-masterid');
     Route::post('/get-unit-by-prodid', 'Purchase\PurchaseController@getUnitByProductId')->name('get-unit-by-prodid');
     Route::post('/seller-details', 'Sellers\SellersController@getAjxSellerDetailsById')->name('seller-details');
+    Route::post('/purchase-goods', 'Purchase\PurchaseController@purchaseGoods')->name('purchase-goods');
+});
+
+/**Routes below for Purchase */
+Route::middleware('auth:web')->group(function() {
+    Route::get('/sales-quote-list', 'Quotes\SalesQuoteController@quoteList')->name('sales-quote-list');    
+    Route::get('/sales/quote-add', 'Quotes\SalesQuoteController@create')->name('quote-add');
+    Route::post('/sales/quote-add', 'Quotes\SalesQuoteController@create')->name('quote-add');
+    Route::get('/sales/quote-update/{id}', 'Quotes\SalesQuoteController@update')->name('quote-update');
+    Route::post('/sales/quote-update/{id}', 'Quotes\SalesQuoteController@update')->name('quote-update');
+    Route::post('/sales/quote-view/{id}', 'Quotes\SalesQuoteController@view')->name('quote-view');
+    Route::delete('/sales/quote-delete', 'Quotes\SalesQuoteController@destroy')->name('quote-delete');
 });
 
 Route::any('/logout','admin\SettingsController@logout');

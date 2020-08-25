@@ -43,6 +43,7 @@
                             <thead>
                                 <tr role="row">
                                     <th class="sorting_asc">S.no.</th>
+                                    <th class="sorting">Company Name</th>
                                     <th class="sorting">Customer Name</th>
                                     <th class="sorting">Email Id</th>
                                     <th class="sorting">Mobile No.</th>
@@ -55,6 +56,7 @@
                                 <?php foreach($customers as $k=>$customer){?>
                                 <tr role="row" class="odd">
                                     <td class="sorting_1"><?=$k+1?></td>
+                                    <td><?=$customer->company_name?></td>
                                     <td><?=$customer->first_name." ".$customer->last_name?></td>
                                     <td><?= $customer->email?></td>
                                     <td><?= $customer->mobile_no?></td>

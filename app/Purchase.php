@@ -3,9 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Sellers;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Purchase extends Model
 {
+    use SoftDeletes;
     protected $table = 'purchase';
     public $fillable = [
         'id', 
@@ -22,6 +25,10 @@ class Purchase extends Model
 
     /**@purpose: making relationship with seller model */
     public function sellers() {
-        $this->belongsTo('sellers');
+        return $this->belongsTo('App\Sellers', 'seller_id', 'id');
+    }
+
+    public function purchaseDetails() {
+        return $this->hasMany('App\PurchaseDetails');
     }
 }

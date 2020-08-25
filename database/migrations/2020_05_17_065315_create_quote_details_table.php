@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class PurchaseDetails extends Migration
+class CreateQuoteDetailsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,12 @@ class PurchaseDetails extends Migration
      */
     public function up()
     {
-        Schema::create('purchase_details', function (Blueprint $table) {
+        Schema::create('quote_details', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('purchase_id');
-            $table->foreign('purchase_id')->references('id')->on('purchase');
-            $table->unsignedBigInteger('master_product_id');
-            $table->foreign('master_product_id')->references('id')->on('master_products');
+            $table->unsignedBigInteger('quote_id');
+            $table->foreign('quote_id')->references('id')->on('quotes');
             $table->unsignedBigInteger('product_id');
             $table->foreign('product_id')->references('id')->on('products');
-            $table->unsignedBigInteger('unit_id');
-            $table->foreign('unit_id')->references('id')->on('units');
             $table->double('length');
             $table->double('width');
             $table->double('quantity');
@@ -40,6 +36,6 @@ class PurchaseDetails extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('purchase_details');
+        Schema::dropIfExists('quote_details');
     }
 }

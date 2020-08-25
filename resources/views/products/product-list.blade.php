@@ -60,14 +60,18 @@
                                     <td><?= $product->units->name?></td>
                                     <td><?= $product->title?></td>
                                     <td><?= $product->sub_title?></td>
-                                    <td><?= $product->description?></td>
+                                    <td><?= (strlen($product->description)
+                                    >20) ? substr($product->description,0,20)."..."
+                                    : $product->description;?></td>
                                     <td class="text-right py-0 align-middle">
                                       <div class="btn-group btn-group-sm">
-                                        <!-- <a href="<?=url('/product-update'."/".Crypt::encrypt($product->id));?>" class="btn btn-primary"><i class="fas fa-pencil-alt"></i></a>
+                                        <a href="<?=url('/product-update'."/".Crypt::encrypt($product->id));?>" class="btn btn-primary">
+                                          <i class="fas fa-pencil-alt"></i>
+                                        </a>
                                         <a href="<?=url('/product-view'."/".Crypt::encrypt($product->id));?>" class="btn btn-info"><i class="fas fa-eye"></i></a>
                                         <a href="#" 
                                         class="btn btn-danger" 
-                                        onclick="deleteproduct({{$product->id}})"><i class="fas fa-trash"></i></a> -->
+                                        onclick="deleteproduct({{$product->id}})"><i class="fas fa-trash"></i></a>
                                     </div>
                                     </td>
                                 </tr>
@@ -112,13 +116,14 @@
                   if (result.value) {
                     $.ajax({
                         type: "post",
-                        url: "<?=url('/master-product-delete')?>",
+                        dataType:'json',
+                        url: "<?=url('/product-delete')?>",
                         data: {'id':id,"_token": "{{ csrf_token() }}",},              
                         success: function(data){
                           Swal.fire(
-                              'Deleted!',
-                              'Your master product has been deleted.',
-                              'success'
+                              'Message!',
+                              data.msg,
+                              data.status
                           );
                           $(".content").load(location.href + " .content");
                         },

@@ -7,5 +7,10 @@ return  [
     ],
     'LM' => [
         'Length', 'Width'
+    ],
+    'payment_modes' => [
+        1 => "cash",
+        2 => 'cheque',
+        3 => 'others'
     ]
 ];

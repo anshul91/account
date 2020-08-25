@@ -21,6 +21,7 @@ class SellersController extends Controller
             $validatedData = $request->validate([
                 'first_name' => 'required|max:200',
                 'last_name' => 'required|max:200',
+                'company_name' => 'required|max:200',
                 'email' => 'required|email|max:255|unique:sellers',
                 'mobile_no' => 'min:10|max:10|unique:sellers',
                 'contact_no' => 'min:10|max:20',
@@ -46,6 +47,7 @@ class SellersController extends Controller
             $validatedData = $request->validate([
                 'first_name' => 'required|max:50',
                 'last_name' => 'required|max:50',
+                'company_name' => 'required|max:255',
                 'email' => 'required|email|max:255',
                 'mobile_no' => 'required|min:5|max:20',
                 'contact_no' => 'required|min:5|max:20',
@@ -55,6 +57,7 @@ class SellersController extends Controller
             $seller_data = Sellers::find($id);
             $seller_data->first_name = $request->input('first_name');
             $seller_data->last_name = $request->input('last_name');
+            $seller_data->company_name = $request->input('company_name');
             $seller_data->email = $request->input('email');
             $seller_data->mobile_no = $request->input('mobile_no');
             $seller_data->contact_no = $request->input('contact_no');

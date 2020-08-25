@@ -21,6 +21,7 @@ class CustomersController extends Controller
             $validatedData = $request->validate([
                 'first_name' => 'required|max:200',
                 'last_name' => 'required|max:200',
+                'company_name' => 'required|max:200',
                 'email' => 'required|email|max:255|unique:customers',
                 'mobile_no' => 'min:10|max:10|unique:customers',
                 'contact_no' => 'min:10|max:20',
@@ -46,6 +47,7 @@ class CustomersController extends Controller
             $validatedData = $request->validate([
                 'first_name' => 'required|max:50',
                 'last_name' => 'required|max:50',
+                'company_name' => 'required|max:255',
                 'email' => 'required|email|max:255',
                 'mobile_no' => 'required|min:5|max:30',
                 'contact_no' => 'required|min:5|max:30',
@@ -55,6 +57,7 @@ class CustomersController extends Controller
             $customer_data = Customers::find($id);
             $customer_data->first_name = $request->input('first_name');
             $customer_data->last_name = $request->input('last_name');
+            $customer_data->company_name = $request->input('company_name');
             $customer_data->email = $request->input('email');
             $customer_data->mobile_no = $request->input('mobile_no');
             $customer_data->contact_no = $request->input('contact_no');

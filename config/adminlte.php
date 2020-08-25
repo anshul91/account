@@ -251,8 +251,8 @@ return [
                     'icon' => 'far fa-fw fa-circle text-warning'
                 ],
                 [
-                    'text' => 'Sale Stock',
-                    'url'  => 'sales-list',
+                    'text' => 'Sales Quote',
+                    'url'  => 'sales-quote-list',
                     'icon' => 'far fa-fw fa-circle text-danger'
                 ]
                 

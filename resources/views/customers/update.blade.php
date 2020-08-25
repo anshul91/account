@@ -36,12 +36,29 @@
                             <div class="form-group">                       
                                 <label for="last_name">Last Name</label>
                                 <input type="text" class="form-control" name="last_name" 
-                                id="last_name" placeholder="Enter last name" value="{{$customer->last_name}}">
+                                id="last_name" placeholder="Enter last name" 
+                                value="{{$customer->last_name}}">
                                 @error('last_name')
                                     <div style="color:red">{{ $message }}</div>
                                 @enderror
                             </div>
                         </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">                       
+                                <label for="company_name">Company Name</label>
+                                <input type="text" class="form-control" name="company_name" 
+                                id="company_name" placeholder="Enter company name" 
+                                value="{{$customer->company_name}}">
+                                @error('company_name')
+                                    <div style="color:red">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+                        
+                        
+                    </div>  
+
+                    <div class="row">
                         <div class="col-sm-4">
                             <div class="form-group">                       
                                 <label for="email">Email Id</label>
@@ -53,9 +70,6 @@
                             </div>
                         </div>
                         
-                    </div>  
-
-                    <div class="row">
                         <div class="col-sm-4">
                             <div class="form-group">                       
                                 <label for="mobile_no">Mobile No.</label>
@@ -81,7 +95,7 @@
                                 <label for="contact_person">Contact Person</label>
                                 <input type="text" class="form-control" name="contact_person" 
                                 id="contact_person" placeholder="Enter Contact Person" 
-                                value="{{$customer->contact_no}}">
+                                value="{{$customer->contact_person}}">
                                 @error('contact_person')
                                     <div style="color:red">{{ $message }}</div>
                                 @enderror

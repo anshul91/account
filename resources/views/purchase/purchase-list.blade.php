@@ -44,7 +44,7 @@
                                 <tr role="row">
                                     <th class="sorting_asc">S.no.</th>
                                     <th class="sorting">Bill No.</th>
-                                    <th class="sorting">Seller Name</th>
+                                    <th class="sorting">Company Name</th>
                                     <th class="sorting">Mobile No.</th>
                                     <th class="sorting">Email Id</th>
                                     <th class="sorting">Purchase Date</th>
@@ -53,24 +53,24 @@
                             </thead>
                             <tbody>
                                 <?php foreach($purchases as $k => $purchase){?>
-                                <tr role="row" class="odd">
-                                    <td class="sorting_1"><?=$k+1?></td>
-                                    
-                                    <td><?= $purchase->bill_no?></td>
-                                    <td><?= $purchase->sellers->first_name." ".$purchase->sellers->last_name?></td>
-                                    <td><?= $purchase->sellers->mobile_no ?? 'N/A'?></td>
-                                    <td><?= $purchase->sellers->email_id?></td>
-                                    <td><?= $purchase->purchase_date?></td>
-                                    <td class="text-right py-0 align-middle">
-                                      <div class="btn-group btn-group-sm">
-                                        <a href="<?=url('/purchase-update'."/".Crypt::encrypt($purchase->id));?>" class="btn btn-primary"><i class="fas fa-pencil-alt"></i></a>
-                                        <a href="<?=url('/purchase-view'."/".Crypt::encrypt($purchase->id));?>" class="btn btn-info"><i class="fas fa-eye"></i></a>
-                                        <a href="#" 
-                                        class="btn btn-danger" 
-                                        onclick="deletepurchase({{$purchase->id}})"><i class="fas fa-trash"></i></a>
-                                    </div>
-                                    </td>
-                                </tr>
+                                    <tr role="row" class="odd">
+                                        <td class="sorting_1"><?=$k+1?></td>
+                                        
+                                        <td><?= $purchase->bill_no ?? '--'?></td>
+                                        <td><?= $purchase->sellers->company_name?></td>
+                                        <td><?= $purchase->sellers->mobile_no ?? 'N/A'?></td>
+                                        <td><?= $purchase->sellers->email?></td>
+                                        <td><?= date("d-M-Y",strtotime($purchase->purchase_date)) ?? '--'?></td>
+                                        <td class="text-right py-0 align-middle">
+                                        <div class="btn-group btn-group-sm">
+                                            <a href="<?=url('/purchase-update'."/".Crypt::encrypt($purchase->id));?>" class="btn btn-primary"><i class="fas fa-pencil-alt"></i></a>
+                                            <a href="<?=url('/purchase-view'."/".Crypt::encrypt($purchase->id));?>" class="btn btn-info"><i class="fas fa-eye"></i></a>
+                                            <a href="#" 
+                                            class="btn btn-danger" 
+                                            onclick="deletepurchase({{$purchase->id}})"><i class="fas fa-trash"></i></a>
+                                        </div>
+                                        </td>
+                                    </tr>
                                 <?php }?>
                             </tbody>
                
@@ -112,7 +112,8 @@
                   if (result.value) {
                     $.ajax({
                         type: "post",
-                        url: "<?=url('/master-purchase-delete')?>",
+                        url: "<?=url('/purchase-delete')?>",
+                        dataType:'json',
                         data: {'id':id,"_token": "{{ csrf_token() }}",},              
                         success: function(data){
                           Swal.fire(

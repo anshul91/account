@@ -44,6 +44,23 @@
                         </div>
                         <div class="col-sm-4">
                             <div class="form-group">                       
+                                <label for="company_name">Company Name</label>
+                                <input type="text" class="form-control" name="company_name" 
+                                id="company_name" placeholder="Enter company name" 
+                                value="{{$seller->company_name}}">
+                                @error('company_name')
+                                    <div style="color:red">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+                        
+                        
+                    </div>  
+
+                    <div class="row">
+                        
+                        <div class="col-sm-4">
+                            <div class="form-group">                       
                                 <label for="email">Email Id</label>
                                 <input type="text" class="form-control" name="email" 
                                 id="email" placeholder="Enter email" value="{{$seller->email}}">
@@ -52,10 +69,6 @@
                                 @enderror
                             </div>
                         </div>
-                        
-                    </div>  
-
-                    <div class="row">
                         <div class="col-sm-4">
                             <div class="form-group">                       
                                 <label for="mobile_no">Mobile No.</label>
@@ -81,12 +94,13 @@
                                 <label for="contact_person">Contact Person</label>
                                 <input type="text" class="form-control" name="contact_person" 
                                 id="contact_person" placeholder="Enter Contact Person" 
-                                value="{{$seller->contact_no}}">
+                                value="{{$seller->contact_person}}">
                                 @error('contact_person')
                                     <div style="color:red">{{ $message }}</div>
                                 @enderror
                             </div>
                         </div>
+                        
                         <div class="col-sm-4">
                             <div class="form-group">                       
                                 <label for="faxno">Fax No.</label>

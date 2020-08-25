@@ -16,12 +16,15 @@ class Products extends Model
     public function unit() {
         return $this->belongsTo('App\Units','unit_id','id');
     }
+    public function units() {
+        return $this->belongsTo('App\Units','unit_id','id');
+    }
     public function master_products() {
         return $this->belongsTo('App\MasterProducts','master_product_id','id');
     }
 
     public function stock_details() {
-        return $this->belongsTo('App\StockDetails');
+        return $this->hasOne('App\StockDetails', 'product_id','id');
     }
 
 /**
@@ -41,4 +44,6 @@ class Products extends Model
     // public function stock_details() {
     //     return $this->hasOne('App\StockDetails');
     // }
+
+
 }

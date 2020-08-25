@@ -1,10 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\purchase;
+namespace App\Http\Controllers\quotes;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Purchase;
 use App\Products;
 use App\StockDetails;
 use App\Sellers;
@@ -13,19 +12,20 @@ use Config;
 use DB;
 use Auth;
 use Crypt;
+use App\Quotes;
 
-class PurchaseController extends Controller
+class SalesQuoteController extends Controller
 {
 
     /**purpose : TO show all purchases done
      * @created by : Anshul pareek
      * @created at : 11-April-2020 
      */
-    public function purchaseList() {
-        $purchases = Purchase::select("*")
-                    ->with(['sellers'])
+    public function quoteList() {
+        $quotes = Quotes::select("*")
+                    ->with(['quoteDetails'])
                     ->get();        
-        return view('purchase/purchase-list',compact('purchases'));
+        return view('quotes/sales-quote-list',compact('quotes'));
     }
 
     /**@purpose: TO add new purchase
@@ -35,17 +35,12 @@ class PurchaseController extends Controller
     public function create() {
         $master_product = MasterProducts::select("*")->get();
         $sellers = Sellers::select("*")->get();
-        return view('purchase/create',compact('master_product', 'sellers'));
+        return view('quotes/create',compact('master_product', 'sellers'));
     }
 
     public function getProdOptByMasterid(Request $request){
         $master_product_id = $request->input('master_product_id');
-        $chk_remaining = $request->input('chk_remaining')?true:false;
-        $purchase_product_data = Products::with(['unit', 'stock_details'])
-        ->whereHas('stock_details',function($qry) use($chk_remaining) {
-            if($chk_remaining)
-                $qry->where('remaining_qty','>',0);
-        })
+        $purchase_product_data = Products::with(['unit','stock_details'])
         ->where(['master_product_id' => $master_product_id])
         ->get();
         $html = '';

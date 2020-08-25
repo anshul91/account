@@ -44,10 +44,11 @@
                         </div>
                         <div class="col-sm-4">
                             <div class="form-group">                       
-                                <label for="email">Email Id</label>
-                                <input type="text" class="form-control" name="email" 
-                                id="email" placeholder="Enter email" value="{{old('email')}}">
-                                @error('email')
+                                <label for="company_name">Company Name</label>
+                                <input type="text" class="form-control" name="company_name" 
+                                id="company_name" placeholder="Enter company name" 
+                                value="{{old('company_name')}}">
+                                @error('company_name')
                                     <div style="color:red">{{ $message }}</div>
                                 @enderror
                             </div>
@@ -56,6 +57,18 @@
                     </div>  
 
                     <div class="row">
+                        
+                    <div class="col-sm-4">
+                            <div class="form-group">                       
+                                <label for="email">Email Id</label>
+                                <input type="text" class="form-control" name="email" 
+                                id="email" placeholder="Enter email" value="{{old('email')}}">
+                                @error('email')
+                                    <div style="color:red">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+                       
                         <div class="col-sm-4">
                             <div class="form-group">                       
                                 <label for="mobile_no">Mobile No.</label>
@@ -77,7 +90,10 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="col-sm-4">
+                        
+                    </div> 
+                    <div class="row">
+                    <div class="col-sm-4">
                             <div class="form-group">                       
                                 <label for="contact_person">Contact Person</label>
                                 <input type="text" class="form-control" name="contact_person" 
@@ -89,8 +105,6 @@
                         </div>
                         
                         
-                    </div> 
-                    <div class="row">
                         <div class="col-sm-4">
                             <div class="form-group">                       
                                 <label for="faxno">Fax No.</label>
